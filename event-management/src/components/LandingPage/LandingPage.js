@@ -1,5 +1,9 @@
 const LandingPage = () => {
-  return <h1>Welcome the eventr!</h1>;
+  return (
+    <div>
+      <h1>Welcome the eventr!</h1>
+    </div>
+  );
 };
 
 export default LandingPage;

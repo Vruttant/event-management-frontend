@@ -1,16 +1,18 @@
-import EventsList from "./components/LandingPage/EventsList";
 import EventsData from "./data/EventsData";
 import { Routes, Route } from "react-router-dom";
-import LandingPage from "./components/LandingPage/LandingPage";
-import CreateEventForm from "./components/Forms/CreateEventForm";
+import AppContainer from "./components/LandingPage/AppContainer";
 
 function App() {
   return (
-    <div className="App p-3">
+    <div className="App">
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/events" element={<EventsList eventData={EventsData} />} />
-        <Route path="/events/create/" element={<CreateEventForm />} />
+        <Route path="/" element={<AppContainer componentToRender="home" />} />
+        <Route
+          path="/events"
+          element={
+            <AppContainer componentToRender="events" eventData={EventsData} />
+          }
+        />
       </Routes>
     </div>
   );
