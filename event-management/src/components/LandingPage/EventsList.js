@@ -1,16 +1,23 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Clock, GeoAlt, CalendarEvent } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import EventDetails from "../EventsPage/EventDetails";
+import { AppContext } from "../../data/Context";
 
-const EventsList = ({ eventData }) => {
+const EventsList = () => {
+  const {
+    eventsData,
+    eventsDataHandler,
+    eventsToShow,
+    eventsToShowDataHandler,
+  } = useContext(AppContext);
+  console.log(eventsData);
   const [show, setShow] = useState(false);
   const [activeEvent, setActiveEvent] = useState({});
 
   const handleClose = () => setShow(false);
   const handleShow = (currentEvent) => {
-    console.log(currentEvent);
     setShow(true);
     setActiveEvent(currentEvent);
   };
@@ -23,8 +30,8 @@ const EventsList = ({ eventData }) => {
           handleClose={handleClose}
         />
       ) : null}
-      {eventData
-        ? eventData.map((currentEvent) => {
+      {eventsData
+        ? eventsData.map((currentEvent) => {
             return (
               <div
                 className="col-sm-12 col-md-6 col-lg-4 mb-3 justify-items-center"

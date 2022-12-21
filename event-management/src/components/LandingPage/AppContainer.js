@@ -3,8 +3,7 @@ import Navbar from "./Navbar";
 import EventsList from "./EventsList";
 import SideBar from "./Sidebar";
 
-const AppContainer = ({ componentToRender, eventData }) => {
-  console.log(eventData);
+const AppContainer = ({ componentToRender }) => {
   return (
     <div>
       <Navbar
@@ -15,17 +14,15 @@ const AppContainer = ({ componentToRender, eventData }) => {
         ]}
       />
       <div className="d-flex h-screen">
-        <SideBar />
-        <div className="border">
+        {componentToRender === "events" ? <SideBar /> : null}
+        <div>
           {componentToRender === "events" ? (
             <div className="p-3">
               <h4>Events near you...</h4>
-              <EventsList eventData={eventData} />
+              <EventsList />
             </div>
           ) : componentToRender === "home" ? (
-            <div className="h-screen">
-              <LandingPage />
-            </div>
+            <LandingPage />
           ) : null}
         </div>
       </div>

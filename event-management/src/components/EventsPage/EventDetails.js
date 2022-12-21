@@ -1,5 +1,6 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import StarRating from "./StarRating";
 const EventDetails = ({ show, handleClose, eventData }) => {
   return (
     <Modal show={show} onHide={handleClose}>
@@ -13,6 +14,18 @@ const EventDetails = ({ show, handleClose, eventData }) => {
           <li>Date: {eventData.date}</li>
           <li>Time: {eventData.time}</li>
         </ul>
+        <div>
+          <h6>Ratings: </h6>
+          <hr />
+          {eventData.reviews.map((review) => {
+            return (
+              <div>
+                <StarRating activeStarCount={review.rating} />
+                <blockquote>{review.review}</blockquote>
+              </div>
+            );
+          })}
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={handleClose}>

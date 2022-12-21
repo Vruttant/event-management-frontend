@@ -1,7 +1,8 @@
 import Modal from "react-bootstrap/Modal";
 import Event from "../../models/Event";
 import { useState } from "react";
-import EventsData from "../../data/EventsData";
+import { AppContext } from "../../data/Context";
+import { useContext } from "react";
 
 const CreateEventForm = ({ show, handleClose }) => {
   const [eventTitle, setEventTitle] = useState("");
@@ -10,10 +11,15 @@ const CreateEventForm = ({ show, handleClose }) => {
   const [eventLocation, setEventLocation] = useState("");
   const [eventDate, setEventDate] = useState("");
   const [eventTime, setEventTime] = useState("");
+
+  const { eventsData, eventsDataHandler } = useContext(AppContext);
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
     console.log("entered onsubmit");
+    const eventID = eventsData.length + 1;
     const newEvent = new Event(
+      eventID,
       eventTitle,
       eventDescription,
       eventImageURL,
@@ -22,8 +28,9 @@ const CreateEventForm = ({ show, handleClose }) => {
       eventTime
     );
 
-    EventsData.push(newEvent);
-    console.log(EventsData);
+    const newEventData = [...eventsData, newEvent];
+    eventsDataHandler(newEventData);
+    handleClose();
   };
   return (
     <Modal show={show} onHide={handleClose}>

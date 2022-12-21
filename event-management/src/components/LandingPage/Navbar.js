@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CreateEventForm from "../Forms/CreateEventForm";
+import { AppContext } from "../../data/Context";
 
 const Navbar = ({ navbarTitle, navbarLinks }) => {
   // format for navbarLinks = [{linkText: "", linkPath: ""}]
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const { user } = useContext(AppContext);
   return (
     <>
       {showCreateForm ? (
@@ -47,9 +49,7 @@ const Navbar = ({ navbarTitle, navbarLinks }) => {
             >
               Create Event
             </button>
-            <button className="btn btn-outline-success" type="submit">
-              Login
-            </button>
+            <button className="btn btn-outline-success">Login</button>
           </div>
         </div>
       </nav>

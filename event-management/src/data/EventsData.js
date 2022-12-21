@@ -9,7 +9,16 @@ const EventsData = [
     "Remote",
     "21-12-2022",
     "11:00",
-    new Review("4", "Good event")
+    [
+      new Review(
+        "3",
+        "Laboris deserunt pariatur quis id cillum. Sint veniam magna magna magna eiusmod ullamco cupidatat consectetur ad officia. Ipsum Lorem excepteur aute aliqua incididunt occaecat anim dolor commodo. Quis elit culpa cillum sit. Enim sint id officia minim non culpa voluptate deserunt amet fugiat fugiat."
+      ),
+      new Review(
+        "5",
+        "Laboris deserunt pariatur quis id cillum. Sint veniam magna magna magna eiusmod ullamco cupidatat consectetur ad officia. Ipsum Lorem excepteur aute aliqua incididunt occaecat anim dolor commodo. Quis elit culpa cillum sit. Enim sint id officia minim non culpa voluptate deserunt amet fugiat fugiat.!"
+      ),
+    ]
   ),
 
   new Event(
@@ -20,7 +29,7 @@ const EventsData = [
     "Appointy, Bhopal",
     "28-12-2022",
     "15:00",
-    new Review("1", "Poor management of the event")
+    [new Review("1", "Poor management of the event")]
   ),
   new Event(
     3,
@@ -30,7 +39,12 @@ const EventsData = [
     "Block A, Tech Park, Banglore",
     "03-01-2023",
     "17:00",
-    new Review("4", "Good event")
+    [
+      new Review(
+        "4",
+        "Laboris deserunt pariatur quis id cillum. Sint veniam magna magna magna eiusmod ullamco cupidatat consectetur ad officia. Ipsum Lorem excepteur aute aliqua incididunt occaecat anim dolor commodo. Quis elit culpa cillum sit. Enim sint id officia minim non culpa voluptate deserunt amet fugiat fugiat."
+      ),
+    ]
   ),
 
   new Event(
@@ -41,7 +55,7 @@ const EventsData = [
     "Appointy, Bhopal",
     "29-12-2022",
     "15:00",
-    new Review("1", "Poor management of the event")
+    [new Review("1", "Poor management of the event")]
   ),
   new Event(
     5,
@@ -51,7 +65,7 @@ const EventsData = [
     "Remote",
     "09-01-2022",
     "14:00",
-    new Review("4", "Good event")
+    [new Review("4", "Good event")]
   ),
 
   new Event(
@@ -62,7 +76,7 @@ const EventsData = [
     "Appointy, Bhopal",
     "03-01-2022",
     "15:00",
-    new Review("1", "Poor management of the event")
+    [new Review("1", "Poor management of the event")]
   ),
 ];
 
