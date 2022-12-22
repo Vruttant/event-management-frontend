@@ -6,20 +6,23 @@ import EventDetails from "../EventsPage/EventDetails";
 import { AppContext } from "../../data/Context";
 
 const EventsList = () => {
-  const {
-    eventsData,
-    eventsDataHandler,
-    eventsToShow,
-    eventsToShowDataHandler,
-  } = useContext(AppContext);
+  const { eventsData, eventsDataHandler } = useContext(AppContext);
   console.log(eventsData);
   const [show, setShow] = useState(false);
   const [activeEvent, setActiveEvent] = useState({});
+  const { user } = useContext(AppContext);
 
   const handleClose = () => setShow(false);
   const handleShow = (currentEvent) => {
     setShow(true);
     setActiveEvent(currentEvent);
+  };
+
+  const handleCancel = (currentEvent) => {
+    const newEventsList = eventsData.filter(
+      (event) => event.id !== currentEvent.id
+    );
+    eventsDataHandler(newEventsList);
   };
   return (
     <div className="row">
@@ -34,7 +37,7 @@ const EventsList = () => {
         ? eventsData.map((currentEvent) => {
             return (
               <div
-                className="col-sm-12 col-md-6 col-lg-4 mb-3 justify-items-center"
+                className="col mb-3 justify-items-center"
                 key={currentEvent.id}
               >
                 <Card
@@ -61,6 +64,17 @@ const EventsList = () => {
                     </ul>
                   </Card.Body>
                   <Card.Footer>
+                    {user ? (
+                      user.is_organizer ? (
+                        <Button
+                          className="ms-1 float-end"
+                          variant="danger"
+                          onClick={() => handleCancel(currentEvent)}
+                        >
+                          Cancel Event
+                        </Button>
+                      ) : null
+                    ) : null}
                     <Button
                       className="float-end"
                       variant="primary"

@@ -55,7 +55,7 @@ const CreateEventForm = ({ show, handleClose }) => {
             <label className="form-label" htmlFor="event-description">
               Event Description
             </label>
-            <input
+            <textarea
               id="event-description"
               className="form-control"
               as="textarea"

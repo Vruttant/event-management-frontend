@@ -6,7 +6,7 @@ import { AppContext } from "./data/Context";
 function App() {
   const [currentEventData, setCurrentEventData] = useState(EventsData);
   const [eventsToShow, setEventsToShow] = useState(currentEventData);
-  const [user, setCurrentUser] = useState({});
+  const [user, setCurrentUser] = useState("");
 
   return (
     <div className="App">

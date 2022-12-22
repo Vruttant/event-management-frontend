@@ -1,7 +1,11 @@
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import StarRating from "./StarRating";
+import CreateReviewForm from "../Forms/CreateReviewForm";
+import { useContext } from "react";
+import { AppContext } from "../../data/Context";
 const EventDetails = ({ show, handleClose, eventData }) => {
+  const { user } = useContext(AppContext);
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
@@ -25,6 +29,13 @@ const EventDetails = ({ show, handleClose, eventData }) => {
               </div>
             );
           })}
+        </div>
+        <div>
+          {user ? (
+            !user.is_organizer ? (
+              <CreateReviewForm targetEvent={eventData} />
+            ) : null
+          ) : null}
         </div>
       </Modal.Body>
       <Modal.Footer>

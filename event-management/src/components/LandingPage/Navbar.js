@@ -2,13 +2,24 @@ import { Link } from "react-router-dom";
 import { useContext, useState } from "react";
 import CreateEventForm from "../Forms/CreateEventForm";
 import { AppContext } from "../../data/Context";
+import UserLoginForm from "../Forms/UserLoginForm";
 
 const Navbar = ({ navbarTitle, navbarLinks }) => {
   // format for navbarLinks = [{linkText: "", linkPath: ""}]
   const [showCreateForm, setShowCreateForm] = useState(false);
-  const { user } = useContext(AppContext);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const { user, setCurrentUser } = useContext(AppContext);
+  const logoutHandler = () => {
+    setCurrentUser("");
+  };
   return (
     <>
+      {showLoginForm ? (
+        <UserLoginForm
+          show={showLoginForm}
+          handleClose={() => setShowLoginForm(false)}
+        />
+      ) : null}
       {showCreateForm ? (
         <CreateEventForm
           show={showCreateForm}
@@ -43,13 +54,31 @@ const Navbar = ({ navbarTitle, navbarLinks }) => {
                 );
               })}
             </ul>
-            <button
-              className="btn btn-outline-primary me-2"
-              onClick={() => setShowCreateForm(true)}
-            >
-              Create Event
-            </button>
-            <button className="btn btn-outline-success">Login</button>
+            {user ? (
+              user.is_organizer ? (
+                <button
+                  className="btn btn-outline-primary me-2"
+                  onClick={() => setShowCreateForm(true)}
+                >
+                  Create Event
+                </button>
+              ) : null
+            ) : null}
+            {user ? (
+              <button
+                className="btn btn-outline-success"
+                onClick={logoutHandler}
+              >
+                Logout
+              </button>
+            ) : (
+              <button
+                className="btn btn-outline-success"
+                onClick={() => setShowLoginForm(true)}
+              >
+                Login
+              </button>
+            )}
           </div>
         </div>
       </nav>
