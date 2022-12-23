@@ -16,7 +16,6 @@ const CreateEventForm = ({ show, handleClose }) => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    console.log("entered onsubmit");
     const eventID = eventsData.length + 1;
     const newEvent = new Event(
       eventID,

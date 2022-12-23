@@ -26,7 +26,7 @@ const Navbar = ({ navbarTitle, navbarLinks }) => {
           handleClose={() => setShowCreateForm(false)}
         />
       ) : null}
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg bg-white">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">
             {navbarTitle}

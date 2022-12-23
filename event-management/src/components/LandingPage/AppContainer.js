@@ -7,13 +7,17 @@ const AppContainer = ({ componentToRender }) => {
   return (
     <div>
       <Navbar
-        navbarTitle="Eventr"
+        navbarTitle="EventBright"
         navbarLinks={[
           { linkText: "Home", linkPath: "/" },
           { linkText: "Events", linkPath: "/events" },
         ]}
       />
-      <div className="d-flex h-screen">
+      <div
+        className={`d-flex ${
+          componentToRender === "home" ? "justify-content-center" : null
+        }`}
+      >
         {componentToRender === "events" ? <SideBar /> : null}
         <div>
           {componentToRender === "events" ? (

@@ -9,13 +9,11 @@ const UserLoginForm = ({ show, handleClose }) => {
   const [password, setPassword] = useState("");
 
   const handleFormSubmit = async (e) => {
-    console.log(e);
     e.preventDefault();
     const userMatch = UserData.filter(
       (user) => user.email === email && user.password === password
     )[0];
     await setCurrentUser(userMatch);
-    console.log(userMatch);
     handleClose();
   };
 

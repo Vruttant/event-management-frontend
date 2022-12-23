@@ -17,7 +17,6 @@ const CreateReviewForm = ({ targetEvent }) => {
     const prevEvent = eventsData.filter(
       (event) => event.id === targetEvent.id
     )[0];
-    console.log(prevEvent);
     prevEvent.reviews.push(newReview);
     newEventsList.push(prevEvent);
     eventsDataHandler(newEventsList);

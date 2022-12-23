@@ -6,8 +6,8 @@ import EventDetails from "../EventsPage/EventDetails";
 import { AppContext } from "../../data/Context";
 
 const EventsList = () => {
-  const { eventsData, eventsDataHandler } = useContext(AppContext);
-  console.log(eventsData);
+  const { eventsData, eventsDataHandler, eventsToShow } =
+    useContext(AppContext);
   const [show, setShow] = useState(false);
   const [activeEvent, setActiveEvent] = useState({});
   const { user } = useContext(AppContext);
@@ -33,8 +33,8 @@ const EventsList = () => {
           handleClose={handleClose}
         />
       ) : null}
-      {eventsData
-        ? eventsData.map((currentEvent) => {
+      {eventsToShow
+        ? eventsToShow.map((currentEvent) => {
             return (
               <div
                 className="col mb-3 justify-items-center"
@@ -87,7 +87,7 @@ const EventsList = () => {
               </div>
             );
           })
-        : "There are no events"}
+        : "There are no events for the search query"}
     </div>
   );
 };
